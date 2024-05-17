@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+
+    <title>Mario Jump</title>
+</head>
+<body>
+
+    <div id="menu" class="menu">
+        <div class="game-title">
+            <h1>Mario Jump</h1>
+        </div>
+        <!-- Campo para inserir o nome do jogador -->
+        <input type="text" id="playerName" placeholder="Digite seu nome" class="player-name-input">
+        <br>
+        <!-- Botão para iniciar o jogo -->
+        <button class="start-button" onclick="confirmNameAndStartGame()">Começar</button>
+        <div id="ranking" class="ranking-container"></div> <!-- Elemento para exibir o ranking -->
+        <button onclick="clearLocalStorage()">Clear Data</button>
+
+    </div>
+
+    <div id="game" class="game-container" style="display:none;">
+        <div class="game-board">
+            <img src="./images/clouds.png" alt="nuvens" class="clouds">
+            <img src="./images/mario.gif" alt="mario" class="mario">
+            <img src="./images/pipe.png" alt="tubo" class="pipe">
+        </div>
+        <div id="score" class="score">Score: 0</div> <!-- Elemento para exibir o score -->
+    </div>
+    
+</body>
+</html>
