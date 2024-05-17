@@ -26,6 +26,19 @@
 .start-button-container {
     margin-top: 50px;
 }
+.player-name-input {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: 2px solid #FF8000; /* Cor laranja típica do Mario */
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.player-name-input:focus {
+    border-color: #FFA500; /* Laranja mais claro ao focar */
+}
+
 
 .start-button {
     padding: 15px 30px;
