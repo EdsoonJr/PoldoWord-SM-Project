@@ -10,9 +10,10 @@
 body {
   margin: 0;
   padding: 0;
-  /* background-image: url("../images/back.jpg");
-  background-size: cover;
-  background-repeat: no-repeat; */
+  font-family: Arial, sans-serif;
+  background-image: url('../images/back.jpg');
+  background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
+  background-repeat: no-repeat;
 }
 
 /* Game Start Menu CSS Styles */
@@ -172,13 +173,68 @@ body {
   font-size: 24px;
   color: #000;
   filter: drop-shadow(0 0 0.50rem #0f0b4d);
-  background-color: #f5d100;
+  background-color: #009cd9;
   border-radius: 8px;
   top: 20px;
   right: 20px;
   padding: 10px 20px;
   position: absolute;
 }
+
+/* Game Over Screen CSS Styles */
+.game-over-screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.game-over-screen h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.game-over-screen button {
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #009cd9;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.game-over-screen button:hover {
+  background-color: #007bb5;
+}
+
+
+.restart-button,
+.menu-button {
+  font-size: 24px;
+  color: #fff;
+  background-color: #e62311;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  padding: 10px 30px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.restart-button:hover,
+.menu-button:hover {
+  background-color: #43af35;
+}
+
 
 @keyframes pipe-animation {
   from {

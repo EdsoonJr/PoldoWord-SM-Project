@@ -4,13 +4,13 @@ const menu = document.getElementById("menu");
 const gameContainer = document.getElementById("game");
 const scoreElement = document.getElementById("score");
 const rankingContainer = document.getElementById("ranking");
+const gameOverScreen = document.getElementById("game-over");
 
-let score = 0; // Inicializa o contador de pontos
-let passedPipe = false; // Variável para controlar se o Mario já passou pelo pipe atual
-let currentPlayer = ""; // Variável para armazenar o nome do jogador atual
-
-// Carregar os dados dos jogadores do armazenamento local ou inicializar uma lista vazia
+let score = 0;
+let passedPipe = false;
+let currentPlayer = "";
 let players = JSON.parse(localStorage.getItem("players")) || [];
+let gameInterval;
 
 const jump = () => {
   mario.classList.add("jump");
@@ -25,11 +25,8 @@ const updateScore = () => {
 
 const checkCollisions = () => {
   const pipePosition = pipe.offsetLeft;
-  const marioPosition = +window
-    .getComputedStyle(mario)
-    .bottom.replace("px", "");
+  const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
 
-  // Verificar se o Mario colidiu com o cano
   if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 100) {
     gameOver();
   } else if (pipePosition < 0 && !passedPipe) {
@@ -55,18 +52,20 @@ const confirmNameAndStartGame = () => {
 const startGame = () => {
   menu.style.display = "none";
   gameContainer.style.display = "block";
+  gameOverScreen.style.display = "none";
   document.addEventListener("keydown", jump);
+  score = 0;
   updateScore();
+  gameInterval = setInterval(checkCollisions, 10);
 };
 
 const gameOver = () => {
+  clearInterval(gameInterval);
   pipe.style.animation = "none";
   pipe.style.left = `${pipe.offsetLeft}px`;
 
   mario.style.animation = "none";
-  mario.style.bottom = `${+window
-    .getComputedStyle(mario)
-    .bottom.replace("px", "")}px`;
+  mario.style.bottom = `${+window.getComputedStyle(mario).bottom.replace("px", "")}px`;
 
   mario.src = "./images/game-over.png";
   mario.style.width = "75px";
@@ -78,29 +77,50 @@ const gameOver = () => {
     showRanking();
   }
 
-  clearInterval(loop);
+  gameOverScreen.style.display = "flex";
 };
 
 const showRanking = () => {
   let rankingHTML = "<h2>Ranking</h2>";
   rankingHTML += "<ol>";
-  players
-    .sort((a, b) => b.score - a.score)
-    .forEach((player, index) => {
-      rankingHTML += `<li>${player.name}: ${player.score}</li>`;
-      if (index >= 4) return; 
-    });
+  players.sort((a, b) => b.score - a.score).forEach((player, index) => {
+    rankingHTML += `<li>${player.name}: ${player.score}</li>`;
+    if (index >= 4) return;
+  });
   rankingHTML += "</ol>";
   rankingContainer.innerHTML = rankingHTML;
 };
 
 window.onload = showRanking;
 
-const loop = setInterval(checkCollisions, 10);
-document.addEventListener("keydown", jump);
-
 const clearLocalStorage = () => {
   localStorage.removeItem("players");
   players = [];
-  showRanking(); // Atualizar o ranking para refletir as alterações
+  showRanking();
+};
+
+const restartGame = () => {
+  // Salvar um indicador no localStorage para diferenciar entre restart e menu
+  localStorage.setItem("restartGame", "true");
+  location.reload();
+};
+
+const returnToMenu = () => {
+  localStorage.setItem("restartGame", "false");
+  location.reload();
+};
+
+window.onload = () => {
+  showRanking();
+
+  const restartGameFlag = localStorage.getItem("restartGame");
+
+  if (restartGameFlag === "true") {
+    localStorage.removeItem("restartGame");
+    startGame();
+  } else {
+    menu.style.display = "flex";
+    gameContainer.style.display = "none";
+    gameOverScreen.style.display = "none";
+  }
 };
