@@ -176,10 +176,9 @@ body {
 }
 
 .score {
-  font-family: "Press Start 2P", cursive;
   font-size: 24px;
   color: #000;
-  filter: drop-shadow(0 0 0.50rem #0f0b4d);
+  filter: drop-shadow(0 0 0.5rem #0f0b4d);
   background-color: #009cd9;
   border-radius: 8px;
   top: 20px;
