@@ -145,11 +145,10 @@ body {
   background: linear-gradient(#87ceeb, #e0f6ff);
 }
 
-.pipe {
+.clouds {
   position: absolute;
-  bottom: 0;
-  width: 75px;
-  animation: pipe-animation 1.5s infinite linear;
+  width: 350px;
+  animation: clouds-animation 20s infinite linear;
 }
 
 .mario {
@@ -158,10 +157,18 @@ body {
   bottom: 0;
 }
 
-.clouds {
+.pipe {
   position: absolute;
-  width: 350px;
-  animation: clouds-animation 20s infinite linear;
+  bottom: 0;
+  width: 75px;
+  animation: pipe-animation 1.5s infinite linear;
+}
+
+.grass {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 280px;
 }
 
 .jump {
@@ -182,6 +189,7 @@ body {
 }
 
 /* Game Over Screen CSS Styles */
+
 .game-over-screen {
   position: fixed;
   top: 50%;
