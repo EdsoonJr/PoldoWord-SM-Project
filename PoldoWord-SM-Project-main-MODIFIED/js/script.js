@@ -25,7 +25,9 @@ const updateScore = () => {
 
 const checkCollisions = () => {
   const pipePosition = pipe.offsetLeft;
-  const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
+  const marioPosition = +window
+    .getComputedStyle(mario)
+    .bottom.replace("px", "");
 
   if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 100) {
     gameOver();
@@ -65,7 +67,9 @@ const gameOver = () => {
   pipe.style.left = `${pipe.offsetLeft}px`;
 
   mario.style.animation = "none";
-  mario.style.bottom = `${+window.getComputedStyle(mario).bottom.replace("px", "")}px`;
+  mario.style.bottom = `${+window
+    .getComputedStyle(mario)
+    .bottom.replace("px", "")}px`;
 
   mario.src = "./images/game-over.png";
   mario.style.width = "75px";
@@ -83,10 +87,12 @@ const gameOver = () => {
 const showRanking = () => {
   let rankingHTML = "<h2>Ranking</h2>";
   rankingHTML += "<ol>";
-  players.sort((a, b) => b.score - a.score).forEach((player, index) => {
-    rankingHTML += `<li>${player.name}: ${player.score}</li>`;
-    if (index >= 4) return;
-  });
+  players
+    .sort((a, b) => b.score - a.score)
+    .forEach((player, index) => {
+      rankingHTML += `<li>${player.name}: ${player.score}</li>`;
+      if (index >= 4) return;
+    });
   rankingHTML += "</ol>";
   rankingContainer.innerHTML = rankingHTML;
 };
@@ -124,3 +130,8 @@ window.onload = () => {
     gameOverScreen.style.display = "none";
   }
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+  var logo = document.getElementById('logo');
+  logo.classList.add('logo-animation');
+});
