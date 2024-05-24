@@ -163,8 +163,9 @@ body {
 
 .pipe {
   position: absolute;
-  bottom: 0;
-  width: 75px;
+  bottom: -2%;
+  width: 70px;
+  rotate: 2deg;
   animation: pipe-animation 1.5s infinite linear;
 }
 
