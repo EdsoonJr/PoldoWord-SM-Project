@@ -64,7 +64,7 @@ const startGame = () => {
 const gameOver = () => {
   clearInterval(gameInterval);
   pipe.style.animation = "none";
-  pipe.style.left = "5%";
+  pipe.style.left = `${pipe.offsetLeft}px`;
 
   mario.style.animation = "none";
   mario.style.bottom = `${+window
@@ -72,8 +72,8 @@ const gameOver = () => {
     .bottom.replace("px", "")}px`;
 
   mario.src = "./images/game-over-mario.png";
-  mario.style.width = "100px";
-  mario.style.marginLeft = `${mario.offsetLeft}px`;
+  mario.style.width = "105px";
+  mario.style.marginLeft = "30px";
   
   if (currentPlayer) {
     players.push({ name: currentPlayer, score });
