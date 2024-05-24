@@ -64,17 +64,17 @@ const startGame = () => {
 const gameOver = () => {
   clearInterval(gameInterval);
   pipe.style.animation = "none";
-  pipe.style.left = `${pipe.offsetLeft}px`;
+  pipe.style.left = "5%";
 
   mario.style.animation = "none";
   mario.style.bottom = `${+window
     .getComputedStyle(mario)
     .bottom.replace("px", "")}px`;
 
-  mario.src = "./images/game-over.png";
-  mario.style.width = "75px";
-  mario.style.marginLeft = "40px";
-
+  mario.src = "./images/game-over-mario.png";
+  mario.style.width = "100px";
+  mario.style.marginLeft = `${mario.offsetLeft}px`;
+  
   if (currentPlayer) {
     players.push({ name: currentPlayer, score });
     localStorage.setItem("players", JSON.stringify(players));
