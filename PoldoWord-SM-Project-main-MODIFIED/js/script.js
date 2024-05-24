@@ -42,6 +42,9 @@ const checkCollisions = () => {
 };
 
 const confirmNameAndStartGame = () => {
+  var audio = document.getElementById("audio");
+  audio.pause(); 
+  
   const playerNameInput = document.getElementById("playerName");
   currentPlayer = playerNameInput.value.trim();
   if (!currentPlayer) {
