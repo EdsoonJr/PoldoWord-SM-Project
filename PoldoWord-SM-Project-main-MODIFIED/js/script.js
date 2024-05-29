@@ -89,6 +89,7 @@ const gameOver = () => {
   
   mario.src = "./images/game-over-mario.png";
   mario.style.width = "110px";
+  mario.style.marginLeft = "30px";
 
   deathSound.currentTime = 0; // Rewind to the start
   deathSound.play(); // Play the death sound
