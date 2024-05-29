@@ -172,10 +172,8 @@ body {
 .grass {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 55px; /* Ajuste a altura conforme necessário */
-  background: url('./images/grama.png') repeat-x; /* Certifique-se de que a imagem está no local correto */
-  background-size: cover; /* Ajusta o tamanho da imagem para cobrir toda a largura */
+  width: 100vw;
+  height: 280px;
 }
 
 .jump {

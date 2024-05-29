@@ -18,15 +18,26 @@
         <img id="logo" src="./images/logo.png" alt="logo" />
       </div>
       <div class="input-container">
-        <label class="label-player-name" for="playerName">Nome do jogador:</label>
-        <input type="text" id="playerName" placeholder="Poldo" class="player-name-input" />
+        <label class="label-player-name" for="playerName"
+          >Nome do jogador:</label
+        >
+        <input
+          type="text"
+          id="playerName"
+          placeholder="Poldo"
+          class="player-name-input"
+        />
       </div>
       <div class="ranking-container">
         <span id="ranking"></span>
-        <button class="clear-button" onclick="clearLocalStorage()">Clear Data</button>
+        <button class="clear-button" onclick="clearLocalStorage()">
+          Clear Data
+        </button>
       </div>
 
-      <button class="start-button" onclick="confirmNameAndStartGame()">START</button>
+      <button class="start-button" onclick="confirmNameAndStartGame()">
+        START
+      </button>
     </div>
 
     <div id="game" class="game-container" style="display: none">
@@ -34,20 +45,21 @@
         <img src="./images/clouds.png" alt="nuvens" class="clouds" />
         <img src="./images/mario.gif" alt="mario" class="mario" />
         <img src="./images/pipe2.png" alt="tubo" class="pipe" />
-        <div class="grass">
-          <img src="./images/grama.png" alt="">
-        </div> <!-- Grama adicionada aqui -->
       </div>
+
       <div id="score" class="score">Score: 0</div>
+      <div>
+        <img class="grass" src="./images/grama.png" alt="" />
+      </div>
     </div>
 
-    <div id="game-over" class="game-over-screen" style="display: none;">
+    <div id="game-over" class="game-over-screen" style="display: none">
       <h1>Game Over</h1>
       <button class="restart-button" onclick="restartGame()">Restart</button>
       <button class="menu-button" onclick="returnToMenu()">Menu</button>
     </div>
 
     <audio id="jumpSound" src="./media/pulo.mp3" preload="auto"></audio>
-    <audio id="deathSound" src="./media/morte.mp3" preload="auto"></audio> <!-- Som da morte adicionado -->
+    <audio id="deathSound" src="./media/morte.mp3" preload="auto"></audio>
   </body>
 </html>
