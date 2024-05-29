@@ -5,6 +5,8 @@ const gameContainer = document.getElementById("game");
 const scoreElement = document.getElementById("score");
 const rankingContainer = document.getElementById("ranking");
 const gameOverScreen = document.getElementById("game-over");
+const jumpSound = document.getElementById("jumpSound");
+const deathSound = document.getElementById("deathSound");
 
 let score = 0;
 let passedPipe = false;
@@ -14,6 +16,8 @@ let gameInterval;
 
 const jump = () => {
   mario.classList.add("jump");
+  jumpSound.currentTime = 0; // Rewind to the start
+  jumpSound.play(); // Play the jump sound
   setTimeout(() => {
     mario.classList.remove("jump");
   }, 500);
@@ -25,9 +29,7 @@ const updateScore = () => {
 
 const checkCollisions = () => {
   const pipePosition = pipe.offsetLeft;
-  const marioPosition = +window
-    .getComputedStyle(mario)
-    .bottom.replace("px", "");
+  const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
 
   if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 100) {
     gameOver();
@@ -70,13 +72,14 @@ const gameOver = () => {
   pipe.style.left = `${pipe.offsetLeft}px`;
 
   mario.style.animation = "none";
-  mario.style.bottom = `${+window
-    .getComputedStyle(mario)
-    .bottom.replace("px", "")}px`;
+  mario.style.bottom = `${+window.getComputedStyle(mario).bottom.replace("px", "")}px`;
 
   mario.src = "./images/game-over-mario.png";
   mario.style.width = "105px";
   mario.style.marginLeft = "30px";
+
+  deathSound.currentTime = 0; // Rewind to the start
+  deathSound.play(); // Play the death sound
   
   if (currentPlayer) {
     players.push({ name: currentPlayer, score });
