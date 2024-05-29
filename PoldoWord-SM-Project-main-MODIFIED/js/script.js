@@ -31,15 +31,21 @@ const checkCollisions = () => {
   const pipePosition = pipe.offsetLeft;
   const marioPosition = +window.getComputedStyle(mario).bottom.replace("px", "");
 
+  // Check if Mario collides with the pipe
   if (pipePosition <= 70 && pipePosition > 0 && marioPosition < 100) {
     gameOver();
-  } else if (pipePosition < 0 && !passedPipe) {
+  } 
+
+  // Check if Mario successfully passes the pipe
+  if (pipePosition < 0 && !passedPipe) {
     score++;
     updateScore();
     passedPipe = true;
+
+    // Reset passedPipe after the pipe has completely moved out of the screen
     setTimeout(() => {
       passedPipe = false;
-    }, 2000);
+    }, 1500); // Adjust the time based on the pipe animation speed
   }
 };
 
@@ -63,6 +69,13 @@ const startGame = () => {
   document.addEventListener("keydown", jump);
   score = 0;
   updateScore();
+  passedPipe = false; // Reiniciar o estado de passedPipe
+
+  pipe.style.animation = "pipe-animation 1.5s infinite linear"; // Reiniciar animação do pipe
+  mario.src = "./images/mario.gif"; // Garantir que o Mario esteja no estado correto
+  mario.style.width = "100px"; // Reiniciar o tamanho do Mario
+  mario.style.marginLeft = "0"; // Reiniciar a posição do Mario
+
   gameInterval = setInterval(checkCollisions, 10);
 };
 
